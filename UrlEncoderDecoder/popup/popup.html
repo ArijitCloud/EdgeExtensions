@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Url Decoder</title>
+    <link rel="stylesheet" href="popup.styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <span>
+          <label id="utility-name">Url Decoder</label>
+          <label>(using js encode/decode uri component methods)</label>
+        </span>
+        <button id="switch">Switch to encoder</button>
+      </div>
+      <div class="field-item">
+        <textarea
+          id="input-area"
+          class="input-area"
+          rows="10"
+          cols="100"
+          placeholder="Type or paste your URL input here..."
+        ></textarea>
+      </div>
+      <div class="field-item">
+        <textarea
+          id="output-area"
+          class="output-area"
+          rows="10"
+          cols="100"
+          placeholder="URL output goes here..."
+          readonly=""
+        ></textarea>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
