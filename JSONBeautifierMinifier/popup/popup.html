@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Url Decoder</title>
+    <title>JSON Utility</title>
     <link rel="stylesheet" href="popup.styles.css" />
   </head>
   <body>
     <div class="container">
       <div class="header">
         <span>
-          <label id="utility-name">Url Decoder</label>
-          <label>(using js encode/decode uri component methods)</label>
+          <label id="utility-name">JSON Beautifier</label>
+          <label>(using js parse and stringify methods)</label>
         </span>
-        <button id="switch">Switch to encoder</button>
+        <button id="switch">Switch to minifier</button>
       </div>
       <div class="field-item">
         <textarea
@@ -21,7 +21,7 @@
           class="input-area"
           rows="10"
           cols="100"
-          placeholder="Type or paste your URL input here..."
+          placeholder="Type or paste your JSON input here..."
         ></textarea>
       </div>
       <div class="field-item">
@@ -30,7 +30,7 @@
           class="output-area"
           rows="10"
           cols="100"
-          placeholder="URL output goes here..."
+          placeholder="JSON output goes here..."
           readonly=""
         ></textarea>
       </div>

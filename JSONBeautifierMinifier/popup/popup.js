@@ -2,24 +2,24 @@ const inputAreaId = document.getElementById("input-area");
 const outputAreaId = document.getElementById("output-area");
 const buttonSwitch = document.getElementById("switch");
 const toolName = document.getElementById("utility-name");
-if (inputAreaId && outputAreaId) {
+if (inputAreaId && outputAreaId && buttonSwitch) {
   inputAreaId.oninput = function () {
     outputAreaId.value =
-      buttonSwitch.innerText === textContent.switchEncoder
-        ? decodeURIComponent(inputAreaId.value)
-        : encodeURIComponent(inputAreaId.value);
+      buttonSwitch.innerText === textContent.switchMinifier
+        ? prettifyJSON(inputAreaId.value)
+        : minifyJSON(inputAreaId.value);
   };
-}
 
-if (buttonSwitch) {
   buttonSwitch.onclick = function () {
-    if (buttonSwitch.innerText === textContent.switchEncoder) {
-      buttonSwitch.innerText = textContent.switchDecoder;
-      toolName.innerText = textContent.encoderTool;
+    if (buttonSwitch.innerText === textContent.switchMinifier) {
+      buttonSwitch.innerText = textContent.switchBeautifier;
+      toolName.innerText = textContent.beautifierTool;     
     } else {
-      buttonSwitch.innerText = textContent.switchEncoder;
-      toolName.innerText = textContent.decoderTool;
+      buttonSwitch.innerText = textContent.switchMinifier;
+      toolName.innerText = textContent.minifierTool;
     }
+    outputAreaId.value = "" ;
+    inputAreaId.value = "" ;
   };
 }
 
@@ -32,8 +32,8 @@ function minifyJSON(inputText) {
 }
 
 const textContent = {
-  switchEncoder: "Switch to encoder",
-  switchDecoder: "Switch to decoder",
-  encoderTool: "Url Encoder",
-  decoderTool: "Url Decoder",
+  switchMinifier: "Switch to minifier",
+  switchBeautifier: "Switch to beautifier",
+  beautifierTool: "JSON Beautifier",
+  minifierTool: "JSON Minifier",
 };

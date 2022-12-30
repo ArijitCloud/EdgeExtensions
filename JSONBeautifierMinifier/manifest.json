@@ -4,10 +4,10 @@
   "manifest_version": 3,
   "description": "A chromium extension to beautify and minify json.",
   "icons": {
-    "16": "icons/urldecoder16x16.png",
-    "32": "icons/urldecoder32x32.png",
-    "48": "icons/urldecoder48x48.png",
-    "128": "icons/urldecoder128x128.png"
+    "16": "icons/jsonutility16x16.png",
+    "32": "icons/jsonutility32x32.png",
+    "48": "icons/jsonutility48x48.png",
+    "128": "icons/jsonutility128x128.png"
   },
   "action": {
     "default_popup": "popup/popup.html"
