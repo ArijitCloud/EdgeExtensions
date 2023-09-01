@@ -1,6 +1,6 @@
 {
   "name": "Url decoder and encoder",
-  "version": "0.0.0.1",
+  "version": "1.0.0.0",
   "manifest_version": 3,
   "description": "A chromium extension to decode encoded url parts.",
   "icons": {
