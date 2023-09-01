@@ -16,8 +16,17 @@
   font-size: 0.9rem;
   display: flex;
   margin-bottom: 10px;
-  justify-content: space-between;
-  
+  justify-content: space-between;  
+}
+
+.header span {
+  line-height: 2rem;
+  font-size: medium;
+}
+
+input[type="checkbox"] {
+  max-width: 2.5rem;
+  cursor: pointer;
 }
 
 #utility-name{
