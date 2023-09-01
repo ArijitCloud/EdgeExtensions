@@ -1,25 +1,63 @@
-//Read DOM elements
+import {
+  getFromStorage,
+  saveInStorage,
+  removeFromStorage,
+} from "./useStorage.js";
+import { formatJSON } from "./utility.js";
+
+/**
+ * Text content for UI elements and constants
+ */
+const textContent = {
+  switchMinifier: "Switch to minifier",
+  switchBeautifier: "Switch to beautifier",
+  beautifierTool: "JSON Beautifier",
+  minifierTool: "JSON Minifier",
+};
+const storageKey = "jsonConverterInput";
+
+/**
+ * Read DOM elements
+ */
 const inputAreaId = document.getElementById("input-area");
 const outputAreaId = document.getElementById("output-area");
 const buttonSwitch = document.getElementById("switch");
 const toolName = document.getElementById("utility-name");
+const buttonDelete = document.getElementById("deleteStorage");
 
-//Once all required DOM elements are available perform desired operation
+/**
+ * Once all required DOM elements are available perform desired operation
+ */
 if (inputAreaId && outputAreaId && buttonSwitch) {
-  //Prettify or minify on input of text in input area
+  const storedValue = getFromStorage(storageKey);
+
+  if (storedValue) {
+    inputAreaId.innerText = storedValue;
+    outputAreaId.value = formatJSON(
+      buttonSwitch.innerText === textContent.switchMinifier,
+      inputAreaId.value
+    );
+  }
+
+  /**
+   * Prettify or minify on input or change of text in input area
+   */
   inputAreaId.oninput = function () {
     try {
-      outputAreaId.value =
-        buttonSwitch.innerText === textContent.switchMinifier
-          ? prettifyJSON(inputAreaId.value)
-          : minifyJSON(inputAreaId.value);
+      outputAreaId.value = formatJSON(
+        buttonSwitch.innerText === textContent.switchMinifier,
+        inputAreaId.value
+      );
       inputAreaId.style.borderColor = "green";
+      saveInStorage(storageKey, inputAreaId.value);
     } catch (error) {
       inputAreaId.style.borderColor = "red";
     }
   };
 
-  //Beautifier to Minifier to Beautifier switch button click handler
+  /**
+   * Beautifier to Minifier to Beautifier switch button click handler
+   */
   buttonSwitch.onclick = function () {
     if (buttonSwitch.innerText === textContent.switchMinifier) {
       buttonSwitch.innerText = textContent.switchBeautifier;
@@ -28,25 +66,22 @@ if (inputAreaId && outputAreaId && buttonSwitch) {
       buttonSwitch.innerText = textContent.switchMinifier;
       toolName.innerText = textContent.minifierTool;
     }
-    outputAreaId.value = "";
+
+    //recompute output area value
+    if (inputAreaId.value) {
+      outputAreaId.value = formatJSON(
+        buttonSwitch.innerText === textContent.switchMinifier,
+        inputAreaId.value
+      );
+    }
+  };
+
+  /**
+   * clear local storage data for the plugin, lets user delete their own data from local storage
+   */
+  buttonDelete.onclick = function () {
+    removeFromStorage(storageKey);
     inputAreaId.value = "";
+    outputAreaId.value = "";
   };
 }
-
-// Function that beautify the json with 2 spaces for tabs need this value to be "\t"
-function prettifyJSON(inputText, format = 2) {
-  return JSON.stringify(JSON.parse(inputText), null, format);
-}
-
-// Function that minify the json input
-function minifyJSON(inputText) {
-  return JSON.stringify(JSON.parse(inputText));
-}
-
-//UI labels
-const textContent = {
-  switchMinifier: "Switch to minifier",
-  switchBeautifier: "Switch to beautifier",
-  beautifierTool: "JSON Beautifier",
-  minifierTool: "JSON Minifier",
-};
