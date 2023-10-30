@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Test your network requests</h1>
+    <label for="urlInput">URL:</label>
+    <input type="text" id="urlInput" placeholder="Enter URL" />
+
+    <label for="headersInput">Headers (JSON):</label>
+    <input
+      type="text"
+      id="headersInput"
+      placeholder='{"Content-Type": "application/json"}'
+    />
+
+    <label for="bodyInput">Request Body (JSON):</label>
+    <textarea id="bodyInput" placeholder='{"key": "value"}'></textarea>
+
+    <button id="sendRequest">Send Request</button>
+
+    <div id="responseDiv"></div>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "manifest_version": 3,
+  "name": "Network request tester",
+  "version": "0.1",
+  "description": "A simple Postman-like tool in F12 DevTools",
+  "devtools_page": "devtools.html"
+}
