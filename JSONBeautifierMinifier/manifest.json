@@ -1,6 +1,6 @@
 {
   "name": "JSON Beautifier and Minifier",
-  "version": "1.0.0.0",
+  "version": "1.0.0.1",
   "manifest_version": 3,
   "description": "A chromium extension to beautify and minify json.",
   "icons": {

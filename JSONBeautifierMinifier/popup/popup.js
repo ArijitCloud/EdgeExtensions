@@ -3,7 +3,7 @@ import {
   saveInStorage,
   removeFromStorage,
 } from "./useStorage.js";
-import { formatJSON } from "./utility.js";
+import { formatJSON,prettifyJSON } from "./utility.js";
 
 /**
  * Text content for UI elements and constants
@@ -32,7 +32,7 @@ if (inputAreaId && outputAreaId && buttonSwitch) {
   const storedValue = getFromStorage(storageKey);
 
   if (storedValue) {
-    inputAreaId.innerText = storedValue;
+    inputAreaId.value = prettifyJSON(storedValue);
     outputAreaId.value = formatJSON(
       buttonSwitch.innerText === textContent.switchMinifier,
       inputAreaId.value
